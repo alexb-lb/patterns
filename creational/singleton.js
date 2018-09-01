@@ -25,7 +25,6 @@ class Database {
   }
 
   getData(){ return this._data }
-
   setData(data){ this._data = data}
 }
 
@@ -34,3 +33,56 @@ console.log(mongo.getData()); // mongo
 
 const mysql = new Database('mysql');
 console.log(mysql.getData()); // mongo;
+
+/**
+ * Example 2. Singleton like factory from addyosmani.com
+ * When the sole instance should be extensible by subclassing, and clients should be able to use
+ * an extended instance without modifying their code.
+ **/
+class SingletonFactory {
+  constructor(type){
+    if ( this._instance === null ) {
+      if (type === 'foo') {
+        this._instance = new FooSingleton();
+      } else {
+        this._instance = new BasicSingleton();
+      }
+    }
+    return this._instance;
+  }
+};
+
+/**
+ * Example 3. Singleton in Function Expression
+ */
+const SingletonTester = (function () {
+
+  // options: an object containing configuration options for the singleton
+  // e.g var options = { name: "test", pointX: 5};
+  function Singleton( options ) {
+    options = options || {};
+    // set some properties for our singleton
+    this.name = "SingletonTester";
+    this.pointX = options.pointX || 6;
+    this.pointY = options.pointY || 10;
+  }
+
+  let instance;
+
+  // an emulation of static variables and methods
+  return {
+    name: "SingletonTester",
+    getInstance: function( options ) {
+      if( instance === undefined ) {
+        instance = new Singleton( options );
+      }
+      return instance;
+    }
+  };
+})();
+
+const singletonTest = SingletonTester.getInstance({ pointX: 5 });
+
+// Log the output of pointX just to verify it is correct
+// Outputs: 5
+console.log( singletonTest.pointX );
