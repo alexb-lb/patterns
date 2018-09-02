@@ -53,9 +53,9 @@ class SingletonFactory {
 };
 
 /**
- * Example 3. Singleton in Function Expression
+ * Example 3. Singleton in Function Expression (Module-like)
  */
-const SingletonTester = (function () {
+const SingletonModule = (function () {
 
   // options: an object containing configuration options for the singleton
   // e.g var options = { name: "test", pointX: 5};
@@ -81,7 +81,7 @@ const SingletonTester = (function () {
   };
 })();
 
-const singletonTest = SingletonTester.getInstance({ pointX: 5 });
+const singletonTest = SingletonModule.getInstance({ pointX: 5 });
 
 // Log the output of pointX just to verify it is correct
 // Outputs: 5

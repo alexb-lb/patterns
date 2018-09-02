@@ -7,6 +7,9 @@
  * This pattern is specifically important and beneficial to JavaScript because it utilizes
  * prototypal inheritance instead of a classic object-oriented inheritance.
  * Hence, it plays to JavaScript’s strength and has native support.
+ *
+ * Reviewing the definitions for this pattern in existing (non-JavaScript) literature,
+ * we 're simply creating copies of existing functional objects, not classes
  */
 
 const Car = {
