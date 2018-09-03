@@ -1,6 +1,8 @@
 /**
- * Constructor pattern
+ * Constructor pattern or Simple factory
  * class-based
+ *
+ * A simple factory is an object which encapsulates the creation of another object.
  *
  * Constructors are special functions that can be used to instantiate new objects
  * with methods and properties defined by that function.

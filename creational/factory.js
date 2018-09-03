@@ -49,3 +49,27 @@ bike.rideOnRearWheel();
 
 car.start();
 car.turnOn4x4();
+
+
+/**
+ * Example 2 - factory as prototype for subclasses. Used in React.js
+ *
+ * Factory Method defines one method, createThing for instance, which is overriden by subclasses who decide
+ * what to return. The Factories and Products must conform to interfaces for clients to be able to use them.
+ */
+class User {
+  constructor(){
+    this._canEditEverything = false;
+  }
+  get canEditEverything() { return this._canEditEverything; }
+}
+//Sub-class
+class Administrator extends User {
+  constructor() {
+    super();
+    this._canEditEverything = true;
+  }
+}
+//Instatiation
+let u2 = new Administrator();
+u2.canEditEverything; //true
