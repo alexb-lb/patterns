@@ -10,14 +10,22 @@
  * a definition (without any implementation) and classes implement it. But in JS (including ES6) they don’t,
  * that’s why we use a class and sub-classes that extend it. So we could have the sub-classes “Administrator”, “Editor”,
  * “Publisher”, etc.
+ *
+ * В JS нет понятия "абстрактный класс" т.к. все классы уже являются обьектами, потому невозможно наследовать
+ * только интерфейс класса, максимум что можно - наследовать все его методы или генерить кучу классов которые
+ * типа повторяют интерфес абстрактной фабрики
  */
 
 class User {
-  constructor(){
+  constructor() {
     this._canEditEverything = false;
   }
-  get canEditEverything() { return this._canEditEverything; }
+
+  get canEditEverything() {
+    return this._canEditEverything;
+  }
 }
+
 //Sub-class
 class Administrator extends User {
   constructor() {
@@ -36,10 +44,10 @@ u2.canEditEverything; //true
  * In the real world, the build, createDoor and other methods are different
  */
 class carFactory {
-  constructor (model) {
+  constructor(model) {
     let car;
 
-    switch(model) {
+    switch (model) {
       case 'Cayman':
         car = new Cayman();
         break;
@@ -62,7 +70,7 @@ class carFactory {
 }
 
 class Cayman {
-  constructor(){
+  constructor() {
     this.model = 'Cayman';
 
     this.createDoor = function (side) {
@@ -72,7 +80,7 @@ class Cayman {
 }
 
 class Panamera {
-  constructor(){
+  constructor() {
     this.model = 'Panamera';
 
     this.createDoor = function (side) {
@@ -82,7 +90,7 @@ class Panamera {
 }
 
 function CaymanDoor(side) {
-  const build = function() {
+  const build = function () {
     console.log(`Build a ${side} door for Cayman`);
   };
 
@@ -92,7 +100,7 @@ function CaymanDoor(side) {
 }
 
 function PanameraDoor(side) {
-  const build = function() {
+  const build = function () {
     console.log(`Build a ${side} door for Panamera`);
   };
 
