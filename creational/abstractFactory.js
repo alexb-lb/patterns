@@ -25,7 +25,8 @@ class Administrator extends User {
     this._canEditEverything = true;
   }
 }
-//Instatiation
+
+// Instantiation
 let u2 = new Administrator();
 u2.canEditEverything; //true
 
