@@ -32,7 +32,7 @@ u2.canEditEverything; //true
 
 
 /**
- * Example 2 - avstract factory as factory for factory
+ * Example 2 - abstract factory as factory for factory
  * In the real world, the build, createDoor and other methods are different
  */
 class carFactory {
