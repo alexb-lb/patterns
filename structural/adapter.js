@@ -54,3 +54,12 @@ class CalculatorAdapter {
 
 adapter = new CalculatorAdapter();
 adapter.operations(5, 10, 'add');
+
+const aggregator = {
+  age: 21,
+  name: 'Alex',
+  location: {
+    city: 'Kyiv',
+    address: 'Khreschatic, 28'
+  }
+}
