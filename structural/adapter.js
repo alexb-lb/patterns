@@ -2,6 +2,8 @@
  * Adapter pattern
  * class-based
  *
+ * Match interfaces of different classes therefore classes can work together despite incompatible interfaces
+ *
  * This pattern lets classes work together that could not otherwise because of incompatible interfaces.
  * It often used to create wrappers for new refactored APIs so that other existing old APIs can still work with them.
  * This is usually done when new implementations or code refactoring
