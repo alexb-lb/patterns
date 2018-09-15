@@ -32,24 +32,18 @@ const carManager = {
   },
 };
 
-carManager.execute({commandName: "requestInfo", carModel: "Ford Mondeo", carId: "54323"});
-carManager.execute({commandName: "buyVehicle", carModel: "Ferrari", carId: "14523"});
-
-/// Another example - from Coursera
-const Invoker = {
-  paste: function (){
-    PasteCommand.execute()
+class Buyer {
+  constructor(){
   }
-};
+  watchCar (carModel, carId){
+    carManager.execute({commandName: "requestInfo", carModel, carId});
+  }
+  buycar (carModel, carId){
+    carManager.execute({commandName: "buyVehicle", carModel, carId});
+  }
+}
 
-const PasteCommand = {
-  isReversible: true,
+const buyer = new Buyer();
+buyer.watchCar('Ford Mondeo', 54323);
+buyer.buycar('Ferrari', 14523);
 
-  execute: function (document, cursorPosition, text){
-    document.insertText(cursorPosition, text);
-  },
-
-  unexecute: function (document, cursorPosition, text){
-    document.deleteText(cursorPosition, text);
-  },
-};

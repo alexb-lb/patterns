@@ -13,23 +13,52 @@
  */
 
 const Car = {
-  start() {  },
-  stop() {  },
+  start() {
+  },
+  stop() {
+  },
 };
 
 // new method added - "turbo" function
-const bmw = Object.create(Car, {turbo: () => { }});
+const bmw = Object.create(Car, {
+  turbo: () => {
+  }
+});
 console.log(bmw.__proto__); // Car
 
 // Also we can implement this pattern through class, in that case there is no difference between "constructor" pattern
-  class Sheep {
-    constructor(name, weight) {
-      this.name = name;
-      this.weight = weight;
-    }
-
-    clone() {
-      return new Sheep(this.name, this.weight);
-    }
+class Sheep {
+  constructor(name, weight) {
+    this.name = name;
+    this.weight = weight;
   }
+
+  clone() {
+    return new Sheep(this.name, this.weight);
+  }
+}
 const dolly = Sheep.clone("Dolly", 60);
+
+
+/**
+ * Example 2
+ */
+const Vehicle = {
+  getModel: function () { console.log( "The model of this vehicle is.." + this.model ) }
+};
+
+// set prototype with defining properties
+const car = Object.create(Vehicle, {
+  id: {
+    // writable:false, configurable:false by default
+    enumerable: true,
+    value: 123
+  },
+  model: {
+    enumerable: true,
+    value: "Ford"
+  }
+});
+
+console.log(car);
+console.log(Vehicle.isPrototypeOf(car));
