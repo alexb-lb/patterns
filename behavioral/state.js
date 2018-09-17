@@ -13,54 +13,43 @@ const TrafficLight = function () {
     // limits number of changes
     if (count++ >= 10) return;
     currentState = state;
-    currentState.go();
+    currentState.start();
   };
 
   this.start = function () {
-    currentState.go();
+    currentState.start();
   };
 };
 
-const Red = function (light) {
-  this.light = light;
-
-  this.go = function () {
-    log.add("Red --> for 1 minute");
-    light.change(new Green(light));
+class Red {
+  constructor(light){
+    this.light = light;
   }
-};
-
-const Yellow = function (light) {
-  this.light = light;
-
-  this.go = function () {
-    log.add("Yellow --> for 10 seconds");
-    light.change(new Red(light));
+  start(){
+    console.log("Red --> for 1 minute");
+    this.light.change(new Green(this.light));
   }
-};
-
-const Green = function (light) {
-  this.light = light;
-
-  this.go = function () {
-    log.add("Green --> for 1 minute");
-    light.change(new Yellow(light));
-  }
-};
-
-// log helper
-const log = (function () {
-  let log = "";
-
-  return {
-    add: function (msg) { log += msg + "\n"; },
-    show: function () { alert(log); log = ""; }
-  }
-})();
-
-function run() {
-  const light = new TrafficLight();
-  light.start();
-
-  log.show();
 }
+
+class Green {
+  constructor(light){
+    this.light = light;
+  }
+  start() {
+    console.log("Green --> for 1 minute");
+    this.light.change(new Yellow(this.light));
+  }
+}
+
+class Yellow  {
+  constructor(light){
+    this.light = light;
+  }
+  start() {
+    console.log("Yellow --> for 10 seconds");
+    this.light.change(new Red(this.light));
+  }
+}
+
+const light = new TrafficLight();
+light.start();

@@ -4,9 +4,13 @@
  * The Command pattern encapsulates actions as objects.
  * Command objects allow for loosely coupled systems by separating the objects
  * that issue a request from the objects that actually process the request.
- * These requests are called events and the code that processes the requests are called event handlers.
+ * These requests are called events and the code that processes the requests
+ * are called event handlers.
+ *
  *
  */
+
+// command class
 const carManager = {
   // public method
   execute: function ({commandName = '', carModel = '', carId = ''}){
@@ -33,17 +37,16 @@ const carManager = {
 };
 
 class Buyer {
-  constructor(){
-  }
+  constructor(){ }
   watchCar (carModel, carId){
     carManager.execute({commandName: "requestInfo", carModel, carId});
   }
-  buycar (carModel, carId){
+  buyCar (carModel, carId){
     carManager.execute({commandName: "buyVehicle", carModel, carId});
   }
 }
 
 const buyer = new Buyer();
 buyer.watchCar('Ford Mondeo', 54323);
-buyer.buycar('Ferrari', 14523);
+buyer.buyCar('Ferrari', 14523);
 
