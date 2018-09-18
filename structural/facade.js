@@ -34,4 +34,4 @@ class Fees {
 }
 
 const shop = new ShopFacade();
-shop.calc(100)
+shop.calc(100);

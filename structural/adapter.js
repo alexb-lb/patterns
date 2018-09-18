@@ -8,49 +8,46 @@
  * It often used to create wrappers for new refactored APIs so that other existing old APIs can still work with them.
  * This is usually done when new implementations or code refactoring
  */
-class OldCalculator {
-  constructor() {
-    this.operations = function (term1, term2, operation) {
-      switch (operation) {
-        case 'add':
-          return term1 + term2;
-        case 'sub':
-          return term1 - term2;
-        default:
-          return NaN;
-      }
-    }
+
+// old interface
+class Shipping {
+  request(zipStart, zipEnd, weight) {
+    // ...
+    return console.log("$49.75");
   }
 }
 
-class NewCalculator {
-  constructor() {
-    this.add = function (term1, term2) {
-      return term1 + term2;
-    };
+// new interface
+class AdvancedShipping {
+  login(credentials) { };
+  setStart(start) { };
+  setDestination(destination) { };
 
-    this.sub = function (term1, term2) {
-      return term1 - term2;
-    };
+  calculate(weight) {
+    // ...
+    return console.log("$39.50");
+  };
+}
+
+// adapter interface
+class ShippingAdapter {
+  constructor(credentials) {
+    this._shipping = new AdvancedShipping();
+    this._shipping.login(credentials);
+  }
+
+  request(zipStart, zipEnd, weight) {
+    this._shipping.setStart(zipStart);
+    this._shipping.setDestination(zipEnd);
+    return this._shipping.calculate(weight);
   }
 }
 
-class CalculatorAdapter {
-  constructor() {
-    const newCalc = new NewCalculator();
+// original shipping object and interface
+const shipping = new Shipping();
+let cost = shipping.request("78701", "10010", "2 lbs");
 
-    this.operations = function (term1, term2, operation) {
-      switch (operation) {
-        case 'add':
-          return newCalc.add(term1, term2);
-        case 'sub':
-          return newCalc.sub(term1, term2);
-        default:
-          return NaN;
-      }
-    }
-  }
-}
-
-adapter = new CalculatorAdapter();
-adapter.operations(5, 10, 'add');
+// new shipping object with adapted interface
+const credentials = {token: "30a8-6ee1"};
+const adapter = new ShippingAdapter(credentials);
+cost = adapter.request("78701", "10010", "2 lbs");
