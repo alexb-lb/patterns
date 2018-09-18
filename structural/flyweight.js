@@ -2,6 +2,10 @@
  * Flyweight pattern
  * object-based
  *
+ * Store the same for all of objects their non-changeble properties into memory.
+ * When new object received - get heavy properties from memory and combine them with changeable properties,
+ * received from outside, as parameters
+ *
  * Pattern focused on efficient data sharing through fine-grained objects.
  * It is used for efficiency and memory conservation purposes.
  *
