@@ -169,7 +169,6 @@ class AdvancedRemote extends Remote {
   }
 }
 
-
 // All devices follow the common interface. It makes them compatible with all types of remotes.
 class Device {
   isEnabled(){}
