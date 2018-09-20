@@ -50,7 +50,7 @@ const Employee = function (name, salary, vacation) {
 
 const ExtraSalary = function () {
   this.visit = function (emp) {
-    // visitor can access encapsulated
+    // visitor can access encapsulated methods and fields
     emp.setSalary(emp.getSalary() * 1.1);
   };
 };
