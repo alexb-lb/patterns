@@ -40,9 +40,9 @@ const FlyWeightFactory = {
 };
 
 class Computer {
-  constructor(make, model, processor, memory, tag){
+  constructor(make, model, processor, chipSet, tag){
     this.flyweight = FlyWeightFactory.get(make, model, processor);
-    this.memory = memory;
+    this.chipSet = chipSet;
     this.tag = tag;
   }
 
@@ -56,8 +56,8 @@ class ComputerCollection {
     this._count = 0;
   }
 
-  add(make, model, processor, memory, tag) {
-    this._computers[tag] = new Computer(make, model, processor, memory, tag);
+  add(make, model, processor, chipSet, tag) {
+    this._computers[tag] = new Computer(make, model, processor, chipSet, tag);
     this._count++;
   }
 

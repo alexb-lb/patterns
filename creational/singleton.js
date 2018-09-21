@@ -2,7 +2,8 @@
  * Singleton pattern
  * object-based
  *
- * In this pattern only one instance of a class can exist.
+ * Ensure a class has only one instance and provide a global point of access to it.
+ *
  * If no instance of the singleton class exists then a new instance is created and returned
  * but if an instance already exists then the reference to the existing instance is returned.
  *

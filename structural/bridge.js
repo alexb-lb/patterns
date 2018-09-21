@@ -23,83 +23,39 @@
  * video updates vs. sound effects. The Bridge pattern allows any input device to work with any output device.
  */
 
-// input devices
+// abstraction - input devices
 class Gestures {
-  constructor(output) {
-    this.output = output
-  }
-
-  tap() {
-    this.output.click()
-  };
-
-  swipe() {
-    this.output.move()
-  };
-
-  pan() {
-    this.output.drag()
-  };
-
-  pinch() {
-    this.output.zoom()
-  };
+  constructor(output) { this.output = output }
+  tap() { this.output.click() };
+  swipe() { this.output.move() };
+  pan() { this.output.drag() };
+  pinch() { this.output.zoom() };
 }
 
 class Mouse {
-  constructor(output) {
-    this.output = output;
-  }
-
-  click() {
-    this.output.click();
-  };
-
-  move() {
-    this.output.move();
-  };
-
-  down() {
-    this.output.drag();
-  };
-
-  wheel() {
-    this.output.zoom();
-  };
+  constructor(output) { this.output = output }
+  click() { this.output.click() };
+  move() { this.output.move() };
+  down() { this.output.drag() };
+  wheel() { this.output.zoom() };
 }
 
-// output devices
+// implementation - output devices
 class Screen {
   constructor() {
-    this.click = function () {
-      console.log("Screen select")
-    };
-    this.move = function () {
-      console.log("Screen move")
-    };
-    this.drag = function () {
-      console.log("Screen drag")
-    };
-    this.zoom = function () {
-      console.log("Screen zoom in")
-    };
+    this.click = function () { console.log("Screen select") };
+    this.move = function () { console.log("Screen move") };
+    this.drag = function () { console.log("Screen drag") };
+    this.zoom = function () { console.log("Screen zoom in") };
   }
 }
 
 class Audio {
   constructor() {
-    this.click = function () {
-      console.log("Sound oink")
-    };
-    this.move = function () {
-      console.log("Sound waves")
-    };
-    this.drag = function () {
-      console.log("Sound screetch")
-    };
-    this.zoom = function () {
-      console.log("Sound volume up")
-    };
+    this.click = function () { console.log("Sound oink") };
+    this.move = function () { console.log("Sound waves") };
+    this.drag = function () { console.log("Sound screetch") };
+    this.zoom = function () { console.log("Sound volume up") };
   }
 }
 
