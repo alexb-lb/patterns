@@ -51,7 +51,6 @@ let raptorBuilder1 = new Raptor.Builder('244E-C');
 let raptor1 = raptorBuilder1.build();
 
 // ... or pass in the builder object as an argument to Raptor.
-// Your call.
 let raptorBuilder2 = new Raptor.Builder('3998A-D');
 let raptor2 = new Raptor(raptorBuilder2);
 

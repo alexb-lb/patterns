@@ -25,7 +25,10 @@
 
 // abstraction - input devices
 class Gestures {
-  constructor(output) { this.output = output }
+  constructor(output) {
+    this.output = output
+  }
+
   tap() { this.output.click() };
   swipe() { this.output.move() };
   pan() { this.output.drag() };
@@ -33,7 +36,10 @@ class Gestures {
 }
 
 class Mouse {
-  constructor(output) { this.output = output }
+  constructor(output) {
+    this.output = output
+  }
+
   click() { this.output.click() };
   move() { this.output.move() };
   down() { this.output.drag() };

@@ -10,7 +10,7 @@
  * It is used for efficiency and memory conservation purposes.
  *
  * This pattern can be used for any kind of caching purposes.
- * In fact, modern browsers use a constiant of flyweight pattern to prevent loading same images twice.
+ * In fact, modern browsers use a kind of flyweight pattern to prevent loading same images twice.
  */
 
 class Flyweight {
@@ -26,8 +26,7 @@ const FlyWeightFactory = {
 
   get(make, model, processor) {
     if (!this._flyweights[make + model]) {
-      this._flyweights[make + model] =
-        new Flyweight(make, model, processor);
+      this._flyweights[make + model] = new Flyweight(make, model, processor);
     }
     return this._flyweights[make + model];
   },
@@ -47,7 +46,6 @@ class Computer {
   }
 
   getMake() { return this.flyweight.make }
-  // ...
 }
 
 class ComputerCollection {

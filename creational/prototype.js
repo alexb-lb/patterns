@@ -21,7 +21,7 @@ const Car = {
 };
 
 // new method added - "turbo" function
-const bmw = Object.create(Car, { turbo: () => { } });
+const bmw = Object.create(Car, { turbo: () => console.log('NOS on') });
 console.log(bmw.__proto__); // Car
 
 /**

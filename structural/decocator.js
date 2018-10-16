@@ -10,66 +10,54 @@
  */
 
 // Example 1
-const User = function(name) {
-  this.name = name;
-
-  this.say = function() {
-    log.add("User: " + this.name);
-  };
-};
-
-const DecoratedUser = function(user, street, city) {
-  this.user = user;
-  this.name = user.name;  // ensures interface stays the same
-  this.street = street; // extend interface
-  this.city = city; // extend interface
-
-  this.say = function() {
-    log.add("Decorated User: " + this.name + ", " +
-      this.street + ", " + this.city);
-  };
-};
-
-// logging helper
-const log = (function() {
-  let log = "";
-
-  return {
-    add: function(msg) { log += msg + "\n"; },
-    show: function() { alert(log); log = ""; }
-  }
-})();
-
-function run() {
-  const user = new User("Kelly");
-  user.say();
-
-  const decorated = new DecoratedUser(user, "Broadway", "New York");
-  decorated.say();
-
-  log.show();
-}
-
-
-// Example 2 - logger
-function work(a) {
-  /*...*/ // work - random function with 1 parameter
-}
-
-function makeLogging(f, log) {
-
-  function wrapper(a) {
-    log.push(a);
-    // bindindg context in 'this' needed if method passed with object, like:
-    // user.method = makeLogging(user.method, log);
-    return f.call(this, a);
+class User {
+  constructor(name) {
+    this.name = name;
   }
 
-  return wrapper;
+  say(){ return 'User: ' + this.name }
 }
 
-const logList = [];
-work = makeLogging(work, logList);
+class DecoratedUser {
+  constructor(userObj, street, city){
+    this.name = userObj.name;  // ensures interface stays the same
+    this.street = street; // extend interface
+    this.city = city; // extend interface
+  }
 
-work(1); // 1
-work(5); // 5
+  say(){ return `Decorated User: ${this.name}, ${this.street}, ${this.city}` }
+}
+
+const user = new User("Kelly");
+console.log(user.say());
+
+const decorated = new DecoratedUser(user, "Broadway", "New York");
+console.log(decorated.say());
+
+
+/**
+ * My example
+ */
+const calculator = {
+  sum: 0,
+  add(a, b) { this.sum = a + b }
+};
+
+// prototype inheritance decorator
+const calculatorMultipleDecorator = Object.assign(calculator, {
+  multiple(number){ this.sum = this.sum * number },
+});
+
+// decorator as function to save memory
+const calculatorSubtractDecorator = (calcObj, number) => {
+  calcObj.sum = calcObj.sum - number;
+};
+
+calculator.add(2, 3);
+console.log(calculator.sum);
+
+calculatorMultipleDecorator.multiple(5);
+console.log(calculator.sum);
+
+calculatorSubtractDecorator(calculatorMultipleDecorator, 5);
+console.log(calculator.sum);
