@@ -16,7 +16,6 @@ const carManager = {
   execute: function ({commandName = '', carModel = '', carId = ''}){
     switch (commandName) {
       case 'requestInfo':
-        console.log(this);
         this._requestInfo(carModel, carId);
         break;
       case 'buyVehicle':
@@ -49,4 +48,3 @@ class Buyer {
 const buyer = new Buyer();
 buyer.watchCar('Ford Mondeo', 54323);
 buyer.buyCar('Ferrari', 14523);
-

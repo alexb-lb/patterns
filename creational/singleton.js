@@ -83,7 +83,4 @@ const SingletonModule = (function () {
 })();
 
 const singletonTest = SingletonModule.getInstance({ pointX: 5 });
-
-// Log the output of pointX just to verify it is correct
-// Outputs: 5
-console.log( singletonTest.pointX );
+console.log( singletonTest.pointX ); // Log the output of pointX just to verify it is correct
