@@ -6,8 +6,6 @@
  * that issue a request from the objects that actually process the request.
  * These requests are called events and the code that processes the requests
  * are called event handlers.
- *
- *
  */
 
 // command class
