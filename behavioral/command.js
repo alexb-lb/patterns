@@ -46,3 +46,31 @@ class Buyer {
 const buyer = new Buyer();
 buyer.watchCar('Ford Mondeo', 54323);
 buyer.buyCar('Ferrari', 14523);
+
+
+/**
+ * My example
+ * we can consider Command as a Controller between View and Model in MVC
+ */
+class Model {
+  saveTextIntoDb(obj) { }
+  deleteTextFromDb(textId) { }
+}
+
+class History {
+  add(obj) { }
+  get() { }
+}
+
+const saveText = (clientId, text, time) => {
+  const realization = Model;
+  const history = History;
+
+  // ... some logic, for example, we can add our command to history for possibility to rollback changes
+  history.add({clientId, text, time});
+  // save into DB
+  realization.save({clientId, text, time});
+};
+
+// client
+button.on('click', saveText(123, 'Hello!!', 2342342321123));

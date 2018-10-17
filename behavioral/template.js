@@ -44,4 +44,4 @@ class Developer extends Employee {
 
 // usage
 const dev = new Developer('Nathan', 100000);
-console.log(dev.work()); // 'Nathan handles application development'
+console.log(dev.work());
