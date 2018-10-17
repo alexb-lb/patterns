@@ -18,9 +18,7 @@ class Iterator {
   }
 
   next() { return this.items[this.index++] }
-
   hasNext() { return this.index <= this.items.length }
-
   reset(){ this.index = 0 }
 
   each(callback) {

@@ -7,6 +7,9 @@
  * because JavaScript allows us to add methods and properties to object dynamically.
  *
  * Decorator allows to extend interface of the decorated class
+ *
+ * Decorator не должен наследовать декорируемый класс, только интерфейс:
+ * вместо одного декорироемого обьекта тогда можно будет подставить другой с таким же интерфейсом
  */
 
 // Example 1
@@ -43,12 +46,7 @@ const calculator = {
   add(a, b) { this.sum = a + b }
 };
 
-// prototype inheritance decorator
-const calculatorMultipleDecorator = Object.assign(calculator, {
-  multiple(number){ this.sum = this.sum * number },
-});
-
-// decorator as function to save memory
+// decorator as function, without object creation, to save memory
 const calculatorSubtractDecorator = (calcObj, number) => {
   calcObj.sum = calcObj.sum - number;
 };
