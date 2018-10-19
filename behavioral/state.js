@@ -5,20 +5,20 @@
  * The object returned by a State pattern class seems to change its class. It provides state-specific logic to a
  * limited set of objects in which each object type represents a particular state.
  */
-const TrafficLight = function () {
-  let count = 0;
-  let currentState = new Red(this);
+class TrafficLight  {
+  constructor(){
+    this.count = 0;
+    this.currentState = new Red(this);
+  }
 
-  this.change = function (state) {
+  change (state) {
     // limits number of changes
-    if (count++ >= 10) return;
-    currentState = state;
-    currentState.start();
-  };
+    if (this.count++ >= 10) return;
+    this.currentState = state;
+    this.currentState.start();
+  }
 
-  this.start = function () {
-    currentState.start();
-  };
+  start () { this.currentState.start() };
 };
 
 class Red {
